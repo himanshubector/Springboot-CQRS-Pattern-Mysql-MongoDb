@@ -18,11 +18,18 @@ public class OrderCommandController {
 
     @PostMapping("/command")
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<String> createOrder(@Valid @RequestBody CreateOrderRequestDTO request) throws JsonProcessingException {
+    public ResponseEntity<String> createOrder(@Valid @RequestBody CreateOrderRequestDTO request) throws Exception {
+//        try {
+//            orderCommandService.createOrder(request);
+//        } catch (Exception e) {
+//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An unexpected error occurred");
+//        }
+
         orderCommandService.createOrder(request);
         return ResponseEntity.ok("Order created successfully");
     }
 
+    
 
     @PutMapping("/{orderId}")
     public ResponseEntity<String> updateOrder(@PathVariable Long orderId, @RequestBody UpdateOrderRequestDTO request) throws JsonProcessingException {
