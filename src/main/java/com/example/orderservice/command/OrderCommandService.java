@@ -18,7 +18,7 @@ public class OrderCommandService {
     private final OrderCommandRepository orderCommandRepository;
     private final OrderEventPublisher orderEventPublisher;
 
-    public void createOrder(CreateOrderRequestDTO request) throws JsonProcessingException {
+    public void createOrder(CreateOrderRequestDTO request) throws Exception {
 
         log.info("Creating order");
 
