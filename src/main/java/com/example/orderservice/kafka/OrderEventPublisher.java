@@ -17,9 +17,16 @@ public class OrderEventPublisher {
     private final KafkaTemplate<String, OrderEvent> kafkaTemplate;
     private final String orderTopic = "order-events";
 
-    public void publishOrderEvent(OrderEvent orderEvent) throws JsonProcessingException {
+    
+    public void publishOrderEvent(OrderEvent orderEvent) throws Exception {
 
         log.info("Publishing order event to Kafka topic");
+
+        // Simulate Kafka failure by throwing an exception
+        // if (true) {
+        //    throw new Exception("Simulated Kafka failure");
+        // }
+        
         kafkaTemplate.send(orderTopic, orderEvent);  // Send the order event to Kafka topic
     }
 
